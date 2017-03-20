@@ -8,6 +8,12 @@
   <%= label_tag :password %>
   <%= password_field_tag :password %>
 
+  <%= radio_button_tag(:user_type, "customer") %>
+  <%= label_tag(:user_type_customer, "as customer") %>
+
+  <%= radio_button_tag(:user_type, "owner") %>
+  <%= label_tag(:user_type_owner, "as owner") %>
+
   <%= submit_tag "Log in" %>
 
 <% end %>
