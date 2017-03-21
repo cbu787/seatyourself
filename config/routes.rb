@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   resources :customers, only: %i(index new create)
   resources :owners, only: %i(index new create)
-  resources :restaurants, only: %i(index show new create)
+  resources :restaurants, only: %i(index show new create) do
+    resources :reservations, only: %i(index new create)
+  end
   resources :sessions, only: %i(new create destroy)
 
   # get 'sessions/new'
