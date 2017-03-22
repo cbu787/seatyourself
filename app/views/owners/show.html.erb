@@ -1,0 +1,15 @@
+<h1>Your profile</h1>
+
+<h2>
+  <%= current_user.email %>
+</h2>
+
+<h3>Your restaurants</h3>
+
+<p>
+  <ul>
+    <%= current_user.restaurants.each do |restaurant| %>
+      <li><%= restaurant.name %></li>
+    <% end %>
+  </ul>
+</p>

@@ -13,8 +13,8 @@
       <% if current_user %>
         Logged in as <%= current_user.email %><%= link_to "Log Out", logout_path, method: :delete %>
       <% else %>
-        <%= link_to "Log In", new_sessions_path %>
-      <%= end %>
+        <%= link_to "Log In", new_session_path %>
+      <% end %>
     </p>
     <%= yield %>
   </body>

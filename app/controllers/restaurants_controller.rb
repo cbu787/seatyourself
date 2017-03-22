@@ -1,4 +1,6 @@
 class RestaurantsController < ApplicationController
+  before_action :ensure_logged_in, only: %i(new create)
+
   def index
     @restaurants = Restaurant.all
   end
@@ -13,6 +15,7 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
+    @restaurant.owner = current_user
     if @restaurant.save
       redirect_to restaurants_url
     else

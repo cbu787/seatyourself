@@ -9,4 +9,11 @@ class ApplicationController < ActionController::Base
     elsif session[:owner_id]
       @current_user ||= Owner.find(session[:owner_id])
     end
+  end
+
+  def ensure_logged_in
+    unless current_user
+      redirect_to new_sessions_url
+    end
+  end
 end
