@@ -1,0 +1,7 @@
+<h1><%= @restaurant.name %></h1>
+
+<% if current_user.class == Owner %>
+  <%= render 'owner' %>
+<% else %>
+  <%= render 'customer' %>
+<% end %>
