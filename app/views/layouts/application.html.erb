@@ -13,7 +13,7 @@
       <% if current_user %>
         Logged in as <%= current_user.email %><%= link_to "Log Out", logout_path, method: :delete %>
       <% else %>
-        <%= link_to "Log In", new_session_path %>
+        <%= link_to "Log In", new_session_path %> | <%= link_to "Customer Sign-up", new_customer_path %> | <%= link_to "Owner Sign-up", new_owners_path %>
       <% end %>
     </p>
     <%= yield %>

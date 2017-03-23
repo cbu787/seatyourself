@@ -10,6 +10,7 @@ class OwnersController < ApplicationController
   def create
     @owner = Owner.new(owner_params)
     if @owner.save
+      session[:owner_id] = @owner.id
       redirect_to restaurants_url
     else
       render :new
