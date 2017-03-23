@@ -1,4 +1,5 @@
 class ReservationsController < ApplicationController
+  before_action :set_restaurant, only %i(new create)
   before_action :ensure_logged_in
 
   def index
@@ -23,5 +24,9 @@ class ReservationsController < ApplicationController
   private
   def reservation_params
     params.require(:reservation).permit(:date, :time, :party_size)
+  end
+
+  def set_restaurant
+    @restaurant = Restaurant.find(params[:restaurant_id])
   end
 end

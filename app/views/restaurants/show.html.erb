@@ -1,5 +1,12 @@
 <h1><%= @restaurant.name %></h1>
 
+<div class="restaurant-info">
+  <p><%= @restaurant.desctiption %></p>
+  <p><%= @restaurant.phone_number %></p>
+  <p><%= @restaurant.open_time %></p>-<%= @restaurant.close_time %>
+  <p><%= @restaurant.price %></p>
+</div>
+
 <% if current_user.class == Owner %>
   <%= render 'owner' %>
 <% else %>
