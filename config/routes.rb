@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   end
   resources :sessions, only: %i(new create destroy)
 
+  delete '/sessions/' => 'sessions#destroy', as: 'logout'
+
   # get 'sessions/new'
   #
   # get 'sessions/create'
