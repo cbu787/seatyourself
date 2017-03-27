@@ -1,4 +1,4 @@
-<h1>Make a reservation</h1>
+<h1>Make a reservation at <%= @restaurant.name %></h1>
 
 <%= form_for [@restaurant, @reservation] do |f| %>
 
@@ -21,4 +21,4 @@
     <%= f.submit %>
   </div>
 
-<%= end %>
+<% end %>

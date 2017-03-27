@@ -1,12 +1,12 @@
 class ReservationsController < ApplicationController
-  before_action :set_restaurant, only %i(new create)
+  before_action :set_restaurant, only: %i(new create)
   before_action :ensure_logged_in
 
   def index
   end
 
   def new
-    @reservation = Reservation.new(params[:restaurant_id])
+    # @reservation = Reservation.new(params[:restaurant_id])
     @reservation = @restaurant.reservations.build
   end
 
