@@ -11,9 +11,16 @@
   <body>
     <p>
       <% if current_user %>
-        Logged in as <%= current_user.email %><%= link_to "Log Out", logout_path, method: :delete %>
-      <% else %>
-        <%= link_to "Log In", new_session_path %> | <%= link_to "Customer Sign-up", new_customer_path %> | <%= link_to "Owner Sign-up", new_owner_path %>
+        Logged in as
+        <% if current_user.class == Customer %>
+          <%= link_to current_user.email, customer_path(current_user) %>
+        <% else %>
+          <%= link_to current_user.email, owner_path(current_user) %>
+        <% end %>
+        | <%= link_to "Home", root_path %> | <%= link_to "Log Out", logout_path, method: :delete %>
+        <% else %>
+          <%= link_to "Log In", new_session_path %> | <%= link_to "Customer Sign-up", new_customer_path %> | <%= link_to "Owner Sign-up", new_owner_path %>
+
       <% end %>
     </p>
     <%= yield %>

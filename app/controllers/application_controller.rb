@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   def ensure_logged_in
     unless current_user
-      redirect_to new_sessions_url
+      redirect_to new_sessions_path
     end
   end
 end

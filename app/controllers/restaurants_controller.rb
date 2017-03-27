@@ -17,7 +17,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.owner = current_user
     if @restaurant.save
-      redirect_to restaurants_url
+      redirect_to owner_path(current_user)
     else
       render :new
     end

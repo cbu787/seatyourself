@@ -11,7 +11,7 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
     if @customer.save
       session[:customer_id] = @customer.id
-      redirect_to restaurants_url
+      redirect_to customer_path(current_user)
     else
       render :new
     end

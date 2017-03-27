@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       if customer && customer.authenticate(params[:password])
         session[:customer_id] = customer.id
         session[:owner_id] = nil
-        redirect_to restaurants_url
+        redirect_to restaurants_path
       else
         render :new
       end
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       if owner && owner.authenticate(params[:password])
         session[:owner_id] = owner.id
         session[:customer_id] = nil
-        redirect_to restaurants_url
+        redirect_to owner_path(current_user)
       else
         render :new
       end
@@ -29,6 +29,6 @@ class SessionsController < ApplicationController
   def destroy
     session[:customer_id] = nil
     session[:owner_id] = nil
-    redirect_to restaurants_url
+    redirect_to restaurants_path
   end
 end
