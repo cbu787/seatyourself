@@ -2,6 +2,17 @@
 
 <%= form_for @restaurant do |f| %>
 
+  <div class="errors">
+    <% if @restaurant.errors.any? %>
+      <p>Please correct <%= pluralize(@restaurant.errors.count, "error") %> to add your restaurant:</p>
+      <ul>
+        <% @restaurant.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+
   <%= f.label :name %>
   <%= f.text_field :name %>
 
