@@ -2,9 +2,14 @@
 
 <div class="restaurant-info">
   <p><%= @restaurant.description %></p>
+  <p><%= @restaurant.address %></p>
   <p>Phone: <%= @restaurant.phone_number %></p>
   <p>Open times: <%= @restaurant.open_time.to_formatted_s(:time) %> - <%= @restaurant.close_time.to_formatted_s(:time) %></p>
   <p>Price rating (1-5): <%= @restaurant.price %></p>
+</div>
+
+<div class="map">
+  <img src="https://maps.googleapis.com/maps/api/staticmap?size=450x300&zoom=16&markers=#{@restaurant.latitude}%2C#{@restaurant.longitude}&key=AIzaSyAiTVVjxjskES28BjVHKJw9bIJfcOaaXeo">
 </div>
 
 <% if current_user.class == Owner %>

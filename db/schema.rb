@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170323003937) do
+ActiveRecord::Schema.define(version: 20170331014715) do
 
   create_table "customers", force: :cascade do |t|
     t.string   "email"
@@ -47,6 +47,9 @@ ActiveRecord::Schema.define(version: 20170323003937) do
     t.time     "open_time"
     t.time     "close_time"
     t.integer  "price"
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
 end
