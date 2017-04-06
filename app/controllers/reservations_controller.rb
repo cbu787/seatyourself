@@ -1,8 +1,9 @@
 class ReservationsController < ApplicationController
-  before_action :set_restaurant, only: %i(new create)
+  before_action :set_restaurant, only: %i(index new create)
   before_action :ensure_logged_in
 
   def index
+    @reservations = @restaurant.reservations.all
   end
 
   def new

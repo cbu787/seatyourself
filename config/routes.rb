@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'restaurants#index'
 
-  resources :customers, only: %i(index new create)
+  resources :customers, only: %i(index new create show)
   resources :owners, only: %i(new create show)
   resources :restaurants, only: %i(index show new create) do
     resources :reservations, only: %i(index new create)
