@@ -8,6 +8,10 @@
   <ul>
     <% current_user.restaurants.each do |restaurant| %>
       <li><%= link_to restaurant.name, restaurant_path(restaurant) %></li>
+        <ul>
+          <li><%= link_to "Reservations today", restaurant_reservations_path(restaurant, when: "today") %>: <%= restaurant.reservations.where(date: Date.today).count %></li>
+          <li><%= link_to "Reservations tomorrow", restaurant_reservations_path(restaurant, when: "tomorrow") %>: <%= restaurant.reservations.where(date: Date.tomorrow).count %></li>
+        </ul>
     <% end %>
   </ul>
 </p>

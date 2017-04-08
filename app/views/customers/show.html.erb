@@ -1,0 +1,15 @@
+<h3>Your profile</h3>
+
+<h1><%= current_user.email %></h1>
+
+<h3>Your reservations</h3>
+
+<p>
+  <ul>
+    <% current_user.reservations.each do |reservation| %>
+      <li><%= link_to reservation.restaurant.name, restaurant_path %>: <%= reservation.date %> at <%= reservation.time %></li>
+    <% end %>
+  </ul>
+</p>
+
+<!-- <p><%= link_to "Add new restaurant", new_restaurant_path %></p> -->
