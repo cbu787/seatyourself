@@ -1,5 +1,11 @@
 <h1><%= @restaurant.name %></h1>
 
+<% if current_user.class == Owner %>
+<%= render 'owner' %>
+<% else %>
+<%= render 'customer' %>
+<% end %>
+
 <div class="restaurant-info">
   <p><%= @restaurant.description %></p>
   <p><%= @restaurant.address %></p>
@@ -11,9 +17,3 @@
 <div class="map">
   <img src="https://maps.googleapis.com/maps/api/staticmap?size=450x300&zoom=16&markers=#{@restaurant.latitude}%2C#{@restaurant.longitude}&key=AIzaSyAiTVVjxjskES28BjVHKJw9bIJfcOaaXeo">
 </div>
-
-<% if current_user.class == Owner %>
-  <%= render 'owner' %>
-<% else %>
-  <%= render 'customer' %>
-<% end %>

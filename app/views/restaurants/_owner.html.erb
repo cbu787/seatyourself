@@ -7,3 +7,6 @@
     <%= reservation.party_size %>
   </div>
 <% end %>
+
+<p><%= link_to "Edit Restaurant", edit_restaurant_path(@restaurant) %></p>
+<p><%= link_to "Remove Restaurant", restaurant_path(@restaurant), method: :delete %></p>

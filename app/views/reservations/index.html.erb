@@ -1,22 +1,13 @@
 <h1>Reservations for <%= @restaurant.name %></h1>
 
-<% if params[:when] == "today" || params[:when] == "tomorrow" %>
+<% if params[:when] %>
   <h3><%= params[:when].capitalize %>:</h3>
   <ul>
-    <% if params[:when] == "today" %>
-      <% @reservations.where(date: Date.today).order("time ASC").each do |reservation| %>
-        <li>Time: <%= reservation.time.to_formatted_s(:time) %>, Party of <%= @reservation.party_size %></li>
-          <% if reservation.customer_id %>
-            , Customer: <%= Customer.find(reservation.customer_id).email %>
-          <% end %>
-      <% end %>
-    <% elsif params[:when] == "tomorrow" %>
-      <% @reservations.where(date: Date.tomorrow).order("time ASC").each do |reservation| %>
-        <li>Time: <%= reservation.time.to_formatted_s(:time) %>, Party of <%= @reservation.party_size %></li>
-          <% if reservation.customer_id %>
-            , Customer: <%= Customer.find(reservation.customer_id).email %>
-          <% end %>
-      <% end %>
+    <% @reservations.where(date: Date.send(params[:when])).order("time ASC").each do |reservation| %>
+      <li>Time: <%= reservation.time.to_formatted_s(:time) %>, Party of <%= @reservation.party_size %></li>
+        <% if reservation.customer_id %>
+          , Customer: <%= Customer.find(reservation.customer_id).email %>
+        <% end %>
     <% end %>
   </ul>
 <% end %>

@@ -7,9 +7,9 @@
 <p>
   <ul>
     <% current_user.reservations.each do |reservation| %>
-      <li><%= link_to reservation.restaurant.name, restaurant_path %>: <%= reservation.date %> at <%= reservation.time %></li>
+      <li><%= link_to reservation.restaurant.name, restaurant_path %>: <%= reservation.date %> at <%= reservation.time %> for <%= reservation.party_size %></li>
     <% end %>
   </ul>
+  <p><%= link_to "Edit this reservation", edit_restaurant_reservation_path(reservation.restaurant, reservation) %></p>
+  <p><%= link_to "Cancel this reservation", restaurant_reservation_path(restaurant.reservation, reservation), method: :delete %></p>
 </p>
-
-<!-- <p><%= link_to "Add new restaurant", new_restaurant_path %></p> -->

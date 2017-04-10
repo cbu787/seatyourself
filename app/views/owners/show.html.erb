@@ -11,6 +11,8 @@
         <ul>
           <li><%= link_to "Reservations today", restaurant_reservations_path(restaurant, when: "today") %>: <%= restaurant.reservations.where(date: Date.today).count %></li>
           <li><%= link_to "Reservations tomorrow", restaurant_reservations_path(restaurant, when: "tomorrow") %>: <%= restaurant.reservations.where(date: Date.tomorrow).count %></li>
+          <p><%= link_to "Edit Restaurant", edit_restaurant_path(restaurant) %></p>
+          <p><%= link_to "Remove Restaurant", restaurant_path(restaurant), method: :delete %></p>
         </ul>
     <% end %>
   </ul>
