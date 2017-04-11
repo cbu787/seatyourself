@@ -6,7 +6,7 @@ class Reservation < ApplicationRecord
   validates :party_size, numericality: {only_integer: true, greater_than: 0, less_than: 21}
 
   def operating_hours
-    if (time < restaurant.open_time) || (time >= restaurant.close_time)
+    if (time < restaurant.open_time.hour) || (time >= restaurant.close_time.hour)
       errors.add(:not_open, "Restaurant closed.")
     end
   end

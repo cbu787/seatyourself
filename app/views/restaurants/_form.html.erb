@@ -24,10 +24,10 @@
   <%= f.text_field :phone_number %>
 
   <%= f.label :open_time %>
-  <%= f.time_field :open_time %>
+  <%= f.time_select :open_time, minute_step: 60, ampm: true %>
 
   <%= f.label :close_time %>
-  <%= f.time_field :close_time %>
+  <%= f.time_select :close_time, minute_step: 60, ampm: true %>
 
   <%= f.label :description %>
   <%= f.text_field :description %>
