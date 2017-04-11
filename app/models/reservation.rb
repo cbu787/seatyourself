@@ -2,6 +2,8 @@ class Reservation < ApplicationRecord
   belongs_to :restaurant
   belongs_to :customer
   validate :operating_hours
+  validates :date, :time, :party_size, :restaurant_id, presence: true
+  validates :party_size, numericality: {only_integer: true, greater_than: 0, less_than: 21}
 
   def operating_hours
     if (time < restaurant.open_time) || (time >= restaurant.close_time)

@@ -1,10 +1,8 @@
 <p>Capacity: <%= @restaurant.capacity %></p>
 
-<% @restaurant.reservations.each do |reservation| %>
+<% @restaurant.reservations.order(:date, :time).each do |reservation| %>
   <div>
-    <%= reservation.date %>
-    <%= reservation.time.to_formatted_s(:time) %>
-    <%= reservation.party_size %>
+    <%= reservation.date.to_formatted_s(:long) %> - <%= reservation.time.to_formatted_s(:time) %> - Party of <%= reservation.party_size %>
   </div>
 <% end %>
 

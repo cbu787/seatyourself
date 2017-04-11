@@ -11,7 +11,7 @@
   <p><%= @restaurant.address %></p>
   <p>Phone: <%= @restaurant.phone_number %></p>
   <p>Open times: <%= @restaurant.open_time.to_formatted_s(:time) %> - <%= @restaurant.close_time.to_formatted_s(:time) %></p>
-  <p>Price rating (1-5): <%= @restaurant.price %></p>
+  <p>Price rating: <%= "$" * @restaurant.price %></p>
 </div>
 
 <div class="map">
