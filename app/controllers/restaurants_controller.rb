@@ -7,7 +7,11 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-    @restaurant = Restaurant.find(params[:id])
+    @reservation = @restaurant.reservations.build
+    if current_user.is_a?(Owner)
+      @reservation.date = Date.today
+      @reservation.time = Time.now.beginning_of_hour
+    end
   end
 
   def new
@@ -25,7 +29,7 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
-    
+
   end
 
   def update

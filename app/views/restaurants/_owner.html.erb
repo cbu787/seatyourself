@@ -1,9 +1,32 @@
-<p>Capacity: <%= @restaurant.capacity %></p>
+<h3>Reservations:</h3>
 
 <% @restaurant.reservations.order(:date, :time).each do |reservation| %>
   <div>
     <%= reservation.date.to_formatted_s(:long) %> - <%= reservation.time.to_formatted_s(:time) %> - Party of <%= reservation.party_size %>
   </div>
+<% end %>
+
+<h3>New reservation (walk-in):</h3>
+
+<%= form_for [@restaurant, @reservation] do |f| %>
+
+  <div>
+    <%= f.hidden_field :date, value: @reservation.date %>
+  </div>
+
+  <div>
+    <%= f.hidden_field :time, value: @reservation.time %>
+  </div>
+
+  <div>
+    <%= f.label :party_size %>
+    <%= f.number_field :party_size %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+
 <% end %>
 
 <p><%= link_to "Edit Restaurant", edit_restaurant_path(@restaurant) %></p>

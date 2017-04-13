@@ -1,5 +1,7 @@
 <h1><%= @restaurant.name %></h1>
 
+<p>Capacity: <%= @restaurant.capacity %></p>
+
 <% if current_user.class == Owner %>
 <%= render 'owner' %>
 <% else %>
