@@ -3,11 +3,10 @@ class ReservationsController < ApplicationController
   before_action :ensure_logged_in
 
   def index
-    @reservations = @restaurant.reservations.all
+    @reservations = @restaurant.reservations
   end
 
   def new
-    # @reservation = Reservation.new(params[:restaurant_id])
     @reservation = @restaurant.reservations.build
   end
 
