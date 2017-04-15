@@ -6,7 +6,7 @@
   </div>
 <% end %>
 
-<!-- <h3>New reservation (walk-in):</h3>
+<h3>New reservation (walk-in):</h3>
 
 <%= form_for [@restaurant, @reservation] do |f| %>
 
@@ -35,10 +35,14 @@
   </div>
 
   <div>
+    <%= f.hidden_field :owner_auth, value: true %>
+  </div>
+
+  <div>
     <%= f.submit %>
   </div>
 
-<% end %> -->
+<% end %>
 
 <p><%= link_to "Edit Restaurant", edit_restaurant_path(@restaurant) %></p>
 <p><%= link_to "Remove Restaurant", restaurant_path(@restaurant), method: :delete %></p>
