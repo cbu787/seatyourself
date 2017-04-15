@@ -2,5 +2,9 @@
 
 <% @restaurants.each do |restaurant| %>
   <h2><%= link_to restaurant.name, restaurant_path(restaurant) %></h2>
-  <p><%= link_to "Reserve a table", new_restaurant_reservation_path(restaurant) %></p>
+  <% if current_user.class == Customer %>
+    <p><%= link_to "Reserve a table", new_restaurant_reservation_path(restaurant) %></p>
+  <% else %>
+    <%= link_to "Reserve a table", new_session_path %>
+  <% end %>
 <% end %>
