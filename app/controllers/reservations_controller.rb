@@ -14,7 +14,7 @@ class ReservationsController < ApplicationController
     # @restaurant = Restaurant.find(params[:restaurant_id])
     @reservation = @restaurant.reservations.build(reservation_params)
     if current_user.is_a?(Customer)
-      @reservation.customer = current_user
+      @reservation.customer_id = current_user
     end
     if @reservation.save && current_user.is_a?(Customer)
       redirect_to customer_path(current_user)
@@ -32,7 +32,7 @@ class ReservationsController < ApplicationController
   def update
     @reservation = @restaurant.reservation.find(params[:id])
     if @reservation.update_attributes(reservation_params)
-      redirect_to customer_path(@reservation.customer)
+      redirect_to customer_path(@reservation.customer_id)
     else
       render :edit
     end

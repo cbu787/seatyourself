@@ -4,7 +4,9 @@
   <h2><%= link_to restaurant.name, restaurant_path(restaurant) %></h2>
   <% if current_user.class == Customer %>
     <p><%= link_to "Reserve a table", new_restaurant_reservation_path(restaurant) %></p>
+  <% elsif current_user.class == Owner %>
+    <p>Please log in as a Customer to reserve a table.</p>
   <% else %>
-    <%= link_to "Reserve a table", new_session_path %>
+    <%= button_to "Reserve a table", new_session_path %>
   <% end %>
 <% end %>
