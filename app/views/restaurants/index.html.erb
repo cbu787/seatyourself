@@ -7,6 +7,6 @@
   <% elsif current_user.class == Owner %>
     <p>Please log in as a Customer to reserve a table.</p>
   <% else %>
-    <%= button_to "Reserve a table", new_session_path %>
+    <%= link_to "Reserve a table", new_session_path %>
   <% end %>
 <% end %>

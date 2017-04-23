@@ -18,8 +18,6 @@ class ReservationsController < ApplicationController
     end
     if @reservation.save && current_user.is_a?(Customer)
       redirect_to customer_path(current_user)
-    elsif @reservation.save && current_user.is_a?(Owner)
-      redirect_to @restaurant
     else
       render :new
     end
