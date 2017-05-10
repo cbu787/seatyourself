@@ -2,13 +2,9 @@
 
 <% if params[:when] %>
   <h3><%= params[:when].capitalize %>:</h3>
-  <% if @reservations.any? %>
-    <ul>
-      <% @reservations.where(date: Date.send(params[:when])).order("time ASC").each do |reservation| %>
-        <li>Time: <%= reservation.time.to_formatted_s(:time) %>, Party of <%= reservation.party_size %></li>
-      <% end %>
-    </ul>
-  <% else %>
-    No reservations.
-  <% end %>
+  <ul>
+    <% @reservations.where(date: Date.send(params[:when])).order("time ASC").each do |reservation| %>
+      <li>Time: <%= reservation.time.to_formatted_s(:time) %>, Party of <%= reservation.party_size %></li>
+    <% end %>
+  </ul>
 <% end %>

@@ -11,12 +11,11 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    # @restaurant = Restaurant.find(params[:restaurant_id])
     @reservation = @restaurant.reservations.build(reservation_params)
     if current_user.is_a?(Customer)
-      @reservation.customer_id = current_user
+      @reservation.customer = current_user
     end
-    if @reservation.save && current_user.is_a?(Customer)
+    if @reservation.save
       redirect_to customer_path(current_user)
     else
       render :new
@@ -39,7 +38,7 @@ class ReservationsController < ApplicationController
   def destroy
     @reservation = @restaurant.reservations.find(params[:id])
     @reservation.destroy
-    redirect_to customer_path(@reservation.customer)
+    redirect_to customer_path(@reservation.customer_id)
   end
 
   private

@@ -1,7 +1,7 @@
 class Reservation < ApplicationRecord
   belongs_to :restaurant
-  belongs_to :customer unless :owner_auth
-  validate :operating_hours unless :owner_auth
+  belongs_to :customer
+  validate :operating_hours
   validate :availability
   validates :date, :time, :party_size, :restaurant_id, presence: true
   validates :party_size, numericality: {only_integer: true, greater_than: 0, less_than: 21}

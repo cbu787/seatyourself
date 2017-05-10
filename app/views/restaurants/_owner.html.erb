@@ -9,43 +9,5 @@
   <% end %>
 <% end %>
 
-<!-- <h3>New reservation (walk-in):</h3>
-
-<%= form_for [@restaurant, @reservation] do |f| %>
-
-<div class="errors">
-<% if @reservation.errors.any? %>
-<%= pluralize(@reservation.errors.count, "error") %>
-<ul>
-<% @reservation.errors.full_messages.each do |msg| %>
-<li><%= msg %></li>
-<% end %>
-</ul>
-<% end %>
-</div>
-
-<div>
-<%= f.hidden_field :date, value: @reservation.date %>
-</div>
-
-<div>
-<%= f.hidden_field :time, value: @reservation.time %>
-</div>
-
-<div>
-<%= f.label :party_size %>
-<%= f.number_field :party_size %>
-</div>
-
-<div>
-<%= f.hidden_field :owner_auth, value: true %>
-</div>
-
-<div>
-<%= f.submit %>
-</div>
-
-<% end %>
-
 <p><%= link_to "Edit Restaurant", edit_restaurant_path(@restaurant) %></p>
 <p><%= link_to "Remove Restaurant", restaurant_path(@restaurant), method: :delete %></p> -->
