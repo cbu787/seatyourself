@@ -1,13 +1,13 @@
-<% if @reservation.date > Date.today %>
-  <h3>Upcoming reservations:</h3>
-    <% @restaurant.reservations.order(:date, :time).each do |reservation| %>
+<% if @restaurant.reservations.any? && @restaurant.reservations.first.persisted? %>
+  <h2>Upcoming reservations:</h2>
+  <% @restaurant.reservations.where('date >= ?', Date.today).order(:date, :time).each do |reservation| %>
     <div>
-      <%= reservation.date.to_formatted_s(:long) %> - <%= reservation.time.to_formatted_s(:time) %> - Party of <%= reservation.party_size %>
-      <!-- <%= link_to "Edit this reservation", edit_restaurant_reservation_path(reservation.restaurant, reservation) %>
-      <%= link_to "Cancel this reservation", restaurant_reservation_path(reservation.restaurant, reservation), method: :delete %> -->
-    </div>
+      <strong><%= reservation.date %></strong>
+      <%= reservation.time.to_formatted_s(:time) %><br>
+      Party of <%= reservation.party_size %>
+    </div><br>
   <% end %>
 <% end %>
 
 <p><%= link_to "Edit Restaurant", edit_restaurant_path(@restaurant) %></p>
-<p><%= link_to "Remove Restaurant", restaurant_path(@restaurant), method: :delete %></p> -->
+<p><%= link_to "Remove Restaurant", restaurant_path(@restaurant), method: :delete %></p>

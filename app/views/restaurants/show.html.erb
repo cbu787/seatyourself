@@ -2,14 +2,6 @@
 
 <p>Capacity: <%= @restaurant.capacity %></p>
 
-<% if current_user == @restaurant.owner %>
-  <%= render 'owner' %>
-<% elsif current_user.class == Customer %>
-  <%= render 'customer' %>
-<% else %>
-  <p>Please log in as a Customer to reserve a table.</p>
-<% end %>
-
 <div class="restaurant-info">
   <p><%= @restaurant.description %></p>
   <p><%= @restaurant.address %></p>
@@ -18,6 +10,14 @@
   <p>Price rating: <%= "$" * @restaurant.price %></p>
 </div>
 
+<% if current_user == @restaurant.owner %>
+<%= render 'owner' %>
+<% elsif current_user.class == Customer %>
+<%= render 'customer' %>
+<% else %>
+<p>Please log in as a Customer to reserve a table.</p>
+<% end %>
+
 <div class="map">
-  <img src="https://maps.googleapis.com/maps/api/staticmap?size=450x300&zoom=16&markers=#{@restaurant.latitude}%2C#{@restaurant.longitude}&key=AIzaSyAiTVVjxjskES28BjVHKJw9bIJfcOaaXeo">
+  <img src= <%= "https://maps.googleapis.com/maps/api/staticmap?size=450x300&zoom=16&markers=#{@restaurant.address.gsub(" ", "+")}&key=AIzaSyAiTVVjxjskES28BjVHKJw9bIJfcOaaXeo" %>>
 </div>
