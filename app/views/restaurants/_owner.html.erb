@@ -1,5 +1,5 @@
 <% if @restaurant.reservations.any? && @restaurant.reservations.first.persisted? %>
-  <h2>Upcoming reservations:</h2>
+  <h3>Upcoming reservations:</h3>
   <% @restaurant.reservations.where('date >= ?', Date.today).order(:date, :time).each do |reservation| %>
     <div>
       <strong><%= reservation.date %></strong>

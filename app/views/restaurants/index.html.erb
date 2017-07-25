@@ -1,12 +1,21 @@
+<div class="jumbotron">
+  <h1>Welcome to Seat Yourself</h1>
+  <p>Don't want to have to call to make a reservation? Why not Seat Yourself?</p>
+</div>
+
 <h1>All Restaurants</h1>
 
-<% @restaurants.each do |restaurant| %>
-  <h2><%= link_to restaurant.name, restaurant_path(restaurant) %></h2>
-  <% if current_user.class == Customer %>
-    <p><%= link_to "Reserve a table", new_restaurant_reservation_path(restaurant) %></p>
-  <% elsif current_user.class == Owner %>
-    <p>Please log in as a Customer to reserve a table.</p>
-  <% else %>
-    <%= link_to "Reserve a table", new_session_path %>
+<div class="row">
+  <% @restaurants.each do |restaurant| %>
+    <div class="col-md-4">
+      <h2><%= link_to restaurant.name, restaurant_path(restaurant) %></h2>
+      <% if current_user.class == Customer %>
+        <p><%= link_to "Reserve a table", new_restaurant_reservation_path(restaurant) %></p>
+      <% elsif current_user.class == Owner %>
+        <p>Please log in as a Customer to reserve a table.</p>
+      <% else %>
+        <%= link_to "Reserve a table", new_session_path %>
+      <% end %>
+    </div>
   <% end %>
-<% end %>
+</div>

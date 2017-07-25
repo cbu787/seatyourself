@@ -13,6 +13,8 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Telex:400,700' rel='stylesheet' type='text/css'>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,19 +24,42 @@
     <![endif]-->
   </head>
   <body>
+    <nav class="navbar navbar-inverse navbar-static-top">
+    	<div class="container">
+    		<div class="navbar-header">
+    			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+    				<span class="sr-only">Toggle navigation</span>
+    				<span class="icon-bar"></span>
+    				<span class="icon-bar"></span>
+    				<span class="icon-bar"></span>
+    			</button>
+    			<a class="navbar-brand" href="/">Seat Yourself</a>
+    		</div>
+    		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    			<ul class="nav navbar-nav navbar-right">
+              <% if current_user %>
+                <% if current_user.class == Customer %>
+                  <li><%= link_to "Profile", customer_path(current_user) %></li>
+                <% else %>
+                  <li><%= link_to "Profile", owner_path(current_user) %></li>
+                <% end %>
+                | <li><%= link_to "Home", root_path %></li> | <li><%= link_to "Log Out", logout_path, method: :delete %></li>
+              <% else %>
+                <li><%= link_to "Log In", new_session_path %></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign up<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><%= link_to "Customer", new_customer_path %></li>
+                    <li><%= link_to "Owner", new_owner_path %></li>
+                  </ul>
+                </li>
+              <% end %>
+    			</ul>
+    		</div>
+    	</div>
+    </nav>
+
     <div class="container">
-      <p>
-        <% if current_user %>
-          <% if current_user.class == Customer %>
-            <%= link_to "Profile", customer_path(current_user) %>
-          <% else %>
-            <%= link_to "Profile", owner_path(current_user) %>
-          <% end %>
-          | <%= link_to "Home", root_path %> | <%= link_to "Log Out", logout_path, method: :delete %>
-        <% else %>
-          <%= link_to "Log In", new_session_path %> | <%= link_to "Customer Sign-up", new_customer_path %> | <%= link_to "Owner Sign-up", new_owner_path %>
-        <% end %>
-      </p>
       <%= yield %>
     </div>
 

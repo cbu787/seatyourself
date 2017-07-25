@@ -14,5 +14,13 @@
  *= require_self
  */
 
-@import "bootstrap-sprockets"
-@import "bootstrap"
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  font-family: 'Telex', sans-serif;
+}
+
+.navbar {
+  margin-bottom: 0;
+}
